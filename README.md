@@ -1,3 +1,3 @@
-# colorize
-
-colorize your console
+colorize
+========
+README text here.
