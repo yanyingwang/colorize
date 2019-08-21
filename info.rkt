@@ -1,8 +1,8 @@
 #lang info
 (define collection "colorize")
-(define deps '("base"))
+(define deps '("base" "racket/dict"))
 (define build-deps '("scribble-lib" "racket-doc" "rackunit-lib"))
 (define scribblings '(("scribblings/colorize.scrbl" ())))
-(define pkg-desc "Description Here")
-(define version "0.0")
-(define pkg-authors '(yanying))
+(define pkg-desc "colorize your console")
+(define version "0.1")
+(define pkg-authors '(yanyingwang))

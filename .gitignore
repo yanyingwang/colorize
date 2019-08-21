@@ -4,3 +4,14 @@
 .DS_Store
 compiled/
 /doc/
+
+
+colorize.html
+manual-fonts.css
+manual-racket.css
+manual-racket.js
+manual-style.css
+racket.css
+scribble-common.js
+scribble.css
+

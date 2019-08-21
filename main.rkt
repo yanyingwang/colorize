@@ -28,13 +28,15 @@
 
 
 (require racket/dict)
+
 (provide colorize
-         colorize/codes)
+         colorize/argv)
+
+
 
 (define (colorize str [color 'default]
                   #:background [background 'default]
                   #:style [style 'default])
-
   (string-append "\033["
                  (dict-ref (colorize/codes 'style) style)
                  ";"
@@ -44,6 +46,15 @@
                  "m"
                  str
                  "\033[0m"))
+
+(define (colorize/argv [type 'all])
+  (let ([colors (dict-keys (colorize/codes 'fg-color))]
+        [styles (dict-keys (colorize/codes 'style))])
+    (case type
+      [(color background) colors]
+      ['style styles]
+      ['all `((color ,@colors)
+              (style ,@styles))])))
 
 (define (colorize/codes [type 'all])
   (let* ([style-codes '((default . "0")            ; Turn off all attributes
@@ -73,18 +84,17 @@
                         (default . 9))]
          [fg-color-codes (map (lambda (l)
                                 `(,(car l) . ,(number->string (+ (cdr l) 30))))
-                        color-codes)]
+                              color-codes)]
          [bg-color-codes (map (lambda (l)
                                 `(,(car l) . ,(number->string (+ (cdr l) 40))))
                               color-codes)])
-
     (case type
-      [(fg-color "foreground color") fg-color-codes]
-      [(background bg-color  "background color") bg-color-codes]
+      ['fg-color fg-color-codes]
+      ['bg-color bg-color-codes]
       ['style style-codes]
-      [else `((color . ,fg-color-codes)
-              (background . ,bg-color-codes)
-              (style . ,style-codes))])))
+      ['all `((fg-color ,@fg-color-codes)
+              (bg-color ,@bg-color-codes)
+              (style ,@style-codes))])))
 
 
 
