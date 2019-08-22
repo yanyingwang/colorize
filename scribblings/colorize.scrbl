@@ -1,10 +1,8 @@
 #lang scribble/manual
-@require[@for-label[colorize
-                    racket/base
-                    racket/dict]]
+@require[@for-label[colorize]]
 
 @title{colorize}
-@author{Yanying Wang}
+@author[(author+email "yanyingwang" "yanyingwang1@gmail.com")]
 
 @defmodule[colorize]
 
