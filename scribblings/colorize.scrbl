@@ -16,15 +16,13 @@ NOTE: this is a exported version of ruby gem @hyperlink["https://github.com/fazi
                    [#:background color2 symbol?]
                    [#:style style symbol?])
 string?]{
-Colorize @code{str} with @code{color1} as the foreground color, @code{color2} as the background, and @code{style} as the font style.
-
-Check the result of @racket[colorize/argv] for the possiable values of arguments.
+Colorize @code{str} with @code{color1} as it's foreground color, @code{color2} as it's background color, and @code{style} as the it's style.
 }
 
 
 @defproc[(colorize/argv [sym symbol?])
 list?]{
-Check the result of @racket[colorize/argv] for the possiable values of arguments.
+show a list of value for the @racket{colorize}'s possible arguments.
 }
 
 
