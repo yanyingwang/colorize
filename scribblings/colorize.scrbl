@@ -25,6 +25,10 @@ list?]{
 show a list of value for the @racket{colorize}'s possible arguments.
 }
 
+@defproc[(colorized? [str string?])
+boolean?]{
+check if #code{str} is colorized or not.
+}
 
 
 @bold{Examples:}

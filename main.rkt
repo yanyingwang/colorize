@@ -27,7 +27,8 @@
 ;; Code here
 
 
-(require racket/dict)
+(require racket/dict
+         racket/string)
 
 (provide colorize
          colorize/argv)
@@ -36,16 +37,21 @@
 
 (define (colorize str [color 'default]
                   #:background [background 'default]
+                  #:bg [bg 'default]
                   #:style [style 'default])
   (string-append "\033["
                  (dict-ref (colorize/codes 'style) style)
                  ";"
                  (dict-ref (colorize/codes 'fg-color) color)
                  ";"
-                 (dict-ref (colorize/codes 'bg-color) background)
+                 (dict-ref (colorize/codes 'bg-color) (or bg background))
                  "m"
                  str
                  "\033[0m"))
+
+(define (colorized? str)
+  (and (string-prefix? str "\e[") ;"\e[0;31;44m"
+       (string-suffix? str  "\e[0m")))
 
 (define (colorize/argv [type 'all])
   (let ([colors (dict-keys (colorize/codes 'fg-color))]
