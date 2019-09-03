@@ -28,7 +28,8 @@
 
 
 (require racket/dict
-         racket/string)
+         racket/string
+         racket/contract)
 
 (provide colorize
          colorize/argv
@@ -36,10 +37,16 @@
 
 
 
-(define (colorize str [color 'default]
-                  #:background [background 'default]
-                  #:bg [bg 'default]
-                  #:style [style 'default])
+(define/contract (colorize str [color 'default]
+                           #:background [background 'default]
+                           #:bg [bg 'default]
+                           #:style [style 'default])
+  (->* (string?)
+       (symbol?
+        #:background symbol?
+        #:bg symbol?
+        #:style symbol?)
+       string?)
   (string-append "\033["
                  (dict-ref (colorize/codes 'style) style)
                  ";"
@@ -50,7 +57,9 @@
                  str
                  "\033[0m"))
 
-(define (colorized? str)
+(define/contract (colorized? str)
+  (-> string?
+      boolean?)
   (and (string-prefix? str "\e[") ;"\e[0;31;44m"
        (string-suffix? str  "\e[0m")))
 
