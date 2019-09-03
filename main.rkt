@@ -31,7 +31,8 @@
          racket/string)
 
 (provide colorize
-         colorize/argv)
+         colorize/argv
+         colorized?)
 
 
 
