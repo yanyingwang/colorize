@@ -39,7 +39,6 @@
 
 (define/contract (colorize str [color 'default]
                            #:background [background 'default]
-                           #:bg [bg 'default]
                            #:style [style 'default])
   (->* (string?)
        (symbol?
@@ -52,7 +51,7 @@
                  ";"
                  (dict-ref (colorize/codes 'fg-color) color)
                  ";"
-                 (dict-ref (colorize/codes 'bg-color) (or bg background))
+                 (dict-ref (colorize/codes 'bg-color) background)
                  "m"
                  str
                  "\033[0m"))
