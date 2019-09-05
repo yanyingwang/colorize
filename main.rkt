@@ -43,7 +43,6 @@
   (->* (string?)
        (symbol?
         #:background symbol?
-        #:bg symbol?
         #:style symbol?)
        string?)
   (string-append "\033["
