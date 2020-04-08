@@ -60,7 +60,9 @@ check if #code{str} is colorized or not.
 (code:comment "below is an example about how to display the the red string to your terminal")
 (displayln (colorize "this is a raw red string" 'red))
 
-(colorize "this is a raw red string on blue with underline" 'red #:background 'blue #:style 'underline)
+(colorize "this is a raw red string on blue with underline" 'red
+                                                            #:background 'blue
+                                                            #:style 'underline)
 
 (code:comment "a practical usage example shown below:")
 (string-join `("\n"
