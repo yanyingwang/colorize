@@ -1,7 +1,8 @@
 #lang scribble/manual
 
 @(require (for-label colorize
-          #;racket/base
+                     #;racket/base
+                     racket/string
           )
            scribble/eval)
 
@@ -54,6 +55,8 @@ check if #code{str} is colorized or not.
 (require colorize)
 
 (colorize/argv 'color)
+(colorize/argv 'style)
+(colorize/argv 'all)
 
 (colorize "this is a raw red string" 'red)
 
