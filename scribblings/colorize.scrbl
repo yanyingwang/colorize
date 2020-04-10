@@ -1,5 +1,6 @@
 #lang scribble/manual
 
+
 @(require (for-label colorize
                      #;racket/base
                      racket/string
@@ -13,10 +14,10 @@
 @title{colorize}
 @author[(author+email "yanyingwang" "yanyingwang1@gmail.com")]
 @defmodule[colorize]
-@smaller{
-Colorize the output text of your console as you wish, source code: @url["https://github.com/yanyingwang/colorzie"].@(linebreak)
+Colorize the output text of your console as you wish, @hyperlink["https://github.com/yanyingwang/colorzie" "source code"].
+@(linebreak)
 @smaller{NOTE: this is a exported version of ruby gem @hyperlink["https://github.com/fazibear/colorize" "colorize"].}
-}
+
 
 @[table-of-contents]
 
