@@ -72,7 +72,7 @@ check if #code{str} is colorized or not.
 (string-join `("\n"
                ,(colorize "Happy" 'light-red)
                ,(colorize "Hacking" 'blue)
-               ,(colorize (string-titlecase (getenv "USER")) 'green)
+               ,(colorize (string-titlecase (or (getenv "USER") "user")) 'green)
                "-"
                ,(colorize "Racket" 'cyan)
                ,(colorize "♥" 'magenta)
