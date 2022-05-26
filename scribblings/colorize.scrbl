@@ -1,11 +1,7 @@
 #lang scribble/manual
 
 
-@(require (for-label colorize
-                     #;racket/base
-                     racket/string
-          )
-           scribble/eval)
+@(require (for-label colorize racket/base racket/string) scribble/eval)
 
 @(define my-eval
    (make-eval-factory '(racket/string colorize)))
