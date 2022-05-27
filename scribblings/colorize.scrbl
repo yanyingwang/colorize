@@ -1,11 +1,7 @@
 #lang scribble/manual
 
 
-@(require (for-label colorize
-                     #;racket/base
-                     racket/string
-          )
-           scribble/eval)
+@(require (for-label colorize racket/base racket/string) scribble/eval)
 
 @(define my-eval
    (make-eval-factory '(racket/string colorize)))
@@ -72,7 +68,7 @@ check if #code{str} is colorized or not.
 (string-join `("\n"
                ,(colorize "Happy" 'light-red)
                ,(colorize "Hacking" 'blue)
-               ,(colorize (string-titlecase (getenv "USER")) 'green)
+               ,(colorize (string-titlecase (or (getenv "USER") "user")) 'green)
                "-"
                ,(colorize "Racket" 'cyan)
                ,(colorize "♥" 'magenta)
