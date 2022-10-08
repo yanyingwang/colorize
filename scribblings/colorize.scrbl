@@ -1,10 +1,11 @@
 #lang scribble/manual
 
 
-@(require (for-label colorize racket/base racket/string) scribble/eval)
+@(require (for-label colorize colorize/optional racket/base racket/string)
+          scribble/eval)
 
 @(define my-eval
-   (make-eval-factory '(racket/string colorize)))
+   (make-eval-factory '(racket/string colorize colorize/optional)))
 
 
 @title{colorize}
@@ -77,3 +78,30 @@ check if #code{str} is colorized or not.
                "\n\n")
              " ")
 ]
+
+
+@section{Optional Colorization}
+
+@defmodule[colorize/optional]
+
+@defparam[colorize? boolean boolean?]{
+Parameter used by @racket[colorize-optional].
+}
+
+@defthing[NO_COLOR? boolean?]{
+True if the environment variable @racket{NO_COLOR?}
+is set and not equal to @racket[0].
+}
+
+@defform[(colorize-optional str arg ...)]{
+If @racket[colorize?] is @racket[#true] and @racket[NO_COLOR?] is @racket[#false]
+then the @racket[str] will be colorized with @racket[colorize].
+
+@racket[arg ...] are arguments given to colorize.
+
+@examples[
+#:eval (my-eval)
+(parameterize ([colorize? #false])
+  (colorize-optional "Happy" 'light-red))
+]
+}
