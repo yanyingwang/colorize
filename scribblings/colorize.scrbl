@@ -89,19 +89,25 @@ Parameter used by @racket[colorize-optional].
 }
 
 @defthing[NO_COLOR? boolean?]{
-True if the environment variable @racket{NO_COLOR?}
+True if the environment variable @racket{NO_COLOR}
 is set and not equal to @racket[0].
 }
 
+@defparam[no-color? boolean boolean?]{
+Parameter used by @racket[colorize-optional].
+Initial value of this parameter is equal to the value of @racket[NO_COLOR?],
+}
+
 @defform[(colorize-optional str arg ...)]{
-If @racket[colorize?] is @racket[#true] and @racket[NO_COLOR?] is @racket[#false]
+If @racket[colorize?] is @racket[#true] and @racket[no-color?] is @racket[#false]
 then the @racket[str] will be colorized with @racket[colorize].
 
-@racket[arg ...] are arguments given to colorize.
+@racket[arg ...] are the arguments passed down to @racket[colorize].
 
 @examples[
 #:eval (my-eval)
-(parameterize ([colorize? #false])
+(parameterize ([colorize? #false]
+               [no-color? #true])
   (colorize-optional "Happy" 'light-red))
 ]
 }

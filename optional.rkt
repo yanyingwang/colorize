@@ -16,8 +16,11 @@
          (getenv "NO_COLOR")])
     (and NO_COLOR (not (equal? "0" NO_COLOR)))))
 
+(define no-color?
+  (make-parameter NO_COLOR?))
+
 
 (define-syntax-rule (colorize-optional str args ...)
-  (if (and (colorize?) (not NO_COLOR?))
+  (if (and (colorize?) (not (no-color?)))
       (colorize str args ...)
       str))
