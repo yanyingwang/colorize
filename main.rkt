@@ -40,9 +40,9 @@
         [styles (dict-keys (colorize/codes 'style))])
     (case type
       [(color background) colors]
-      ['style styles]
-      ['all `((color ,@colors)
-              (style ,@styles))])))
+      [(style) styles]
+      [(all) `((color ,@colors)
+               (style ,@styles))])))
 
 (define (colorize/codes [type 'all])
   (let* ([style-codes '((default . "0")            ; Turn off all attributes
@@ -77,9 +77,9 @@
                                 `(,(car l) . ,(number->string (+ (cdr l) 40))))
                               color-codes)])
     (case type
-      ['fg-color fg-color-codes]
-      ['bg-color bg-color-codes]
-      ['style style-codes]
-      ['all `((fg-color ,@fg-color-codes)
-              (bg-color ,@bg-color-codes)
-              (style ,@style-codes))])))
+      [(fg-color) fg-color-codes]
+      [(bg-color) bg-color-codes]
+      [(style) style-codes]
+      [(all) `((fg-color ,@fg-color-codes)
+               (bg-color ,@bg-color-codes)
+               (style ,@style-codes))])))
